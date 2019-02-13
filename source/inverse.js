@@ -1,14 +1,20 @@
 'use strict';
 
 const inverse = (numbers, idxFreeze) => {
-    if (numbers instanceof Array && (isFinite(idxFreeze) || idxFreeze === undefined)) {
-        if (idxFreeze) {
-            let leftChunk = numbers.slice(0, idxFreeze);
-            let rightChunk = numbers.slice(idxFreeze);
-            (idxFreeze > 0) ? leftChunk.push(...rightChunk.reverse()) : leftChunk.reverse().push(...rightChunk);
-            return leftChunk;
-        }
+    const isValidArguments = numbers instanceof Array && (isFinite(idxFreeze) || idxFreeze === undefined);
+
+    if (!isValidArguments) {
+        throw new TypeError("Invalid arguments");
+    }
+
+    if (!idxFreeze) {
         return numbers.reverse();
     }
-    throw new TypeError("Invalid arguments");
+
+    let leftChunk = numbers.slice(0, idxFreeze);
+    let rightChunk = numbers.slice(idxFreeze);
+    (idxFreeze > 0) ? leftChunk.push(...rightChunk.reverse()) : leftChunk.reverse().push(...rightChunk);
+
+    return leftChunk;
+
 };
