@@ -37,9 +37,9 @@ QUnit.module('Тестируем функцию inverse', function () {
 	});
 
 	QUnit.test('Неверный ввод аргументов', function (assert) {
-		assert.throws(() => inverse({a: 1, b: 2}, 4), TypeError);
-		assert.throws(() => inverse([1, 2, 3], 'string :('), TypeError);
-		assert.throws(() => inverse({a: 1, b: 2}, 'string :('), TypeError);
-		assert.throws(() => inverse({a: 1, b: 2}), TypeError);
+		assert.deepEqual(inverse({a: 1, b: 2}, 4), []);
+		assert.deepEqual(inverse([1, 2, 3], 'string :('), []);
+		assert.deepEqual(inverse({a: 1, b: 2}, 'string :('), []);
+		assert.deepEqual(inverse({a: 1, b: 2}), []);
 	});
 });

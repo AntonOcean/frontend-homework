@@ -4,7 +4,7 @@ const inverse = (numbers, idxFreeze) => {
     const isValidArguments = numbers instanceof Array && (isFinite(idxFreeze) || idxFreeze === undefined);
 
     if (!isValidArguments) {
-        throw new TypeError("Invalid arguments");
+        return []
     }
 
     if (!idxFreeze) {
